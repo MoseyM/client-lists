@@ -35,15 +35,19 @@ define("PUBLIC_PATH",  dirname(__DIR__).DIRECTORY_SEPARATOR.'public');
         </ul>
       </nav>
       <div class="row">
-        <div class="col text-center">
-          <?php 
-            if (isset($_SESSION['user'])){
-                getClientListPage();
-            } else {
-                getLogin();
-            }
-          ?>
+          <?php if (isset($_SESSION['user'])): ?>
+            <div class="col">
+              <?php getClientListPage(); ?>
+            </div>
+          <?php else: ?>
+              <div class="col"></div>
+              <div class="col text-center">
+                <?php getLogin(); ?>
+              </div>
+              <div class="col"></div>
+          <?php endif; ?>
         </div>
+        <div class="col"></div>
       </div>
     </div>
     <script src="js/jquery-3.3.1.min.js"></script>
